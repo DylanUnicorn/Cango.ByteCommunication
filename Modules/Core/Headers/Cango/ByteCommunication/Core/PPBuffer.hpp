@@ -23,7 +23,7 @@ namespace Cango :: inline ByteCommunication {
 		bool IsLastMessageFoundInPongSpan{false};
 
 		[[nodiscard]] bool FindMessageSpan(CByteSpan& span) noexcept {
-			const auto head_index = std::ranges::find(PingSpan, HeadByte);
+			const auto head_index = std::find(PingSpan.begin(), PingSpan.end(), HeadByte);
 			if (head_index == PingSpan.end()) return false;
 			span = FullSpan.subspan(head_index - PingSpan.begin(), PingSpan.size());
 			return true;

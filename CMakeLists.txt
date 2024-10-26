@@ -19,6 +19,10 @@ AddModulesInDirectory(
 AddCXXModule(
 	NAME "ByteCommunication"
 	NAMESPACE "Cango"
+	CXX_STANDARD 26
+	HEADER_DIR Headers
+	SOURCE_DIR Sources
+	TESTER_DIR Testers
 	LINKS
 		"Cango::ByteCommunication::Core"
 		"Cango::ByteCommunication::BoostImplementations"

@@ -3,6 +3,10 @@ project(Cango.ByteCommunication.BoostImplementations)
 AddCXXModule(
 	NAME "BoostImplementations"
 	NAMESPACE "Cango::ByteCommunication"
+	CXX_STANDARD 26
+	HEADER_DIR Headers
+	SOURCE_DIR Sources
+	TESTER_DIR Testers
 	LINKS
 		"fmt::fmt"
 		"spdlog::spdlog"

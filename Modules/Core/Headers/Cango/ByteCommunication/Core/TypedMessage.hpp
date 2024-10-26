@@ -1,7 +1,6 @@
 #pragma once
 
 #include <ranges>
-#include <format>
 #include <concepts>
 
 #include "ByteTypes.hpp"
@@ -26,7 +25,7 @@ namespace Cango :: inline ByteCommunication :: inline Core {
 		requires std::is_trivially_assignable_v<T, const T>
 		[[nodiscard]] T& GetDataAs() noexcept {
 			static_assert(sizeof(T) == TMessage::DataSize, "inconsistent size of data and object");
-			return *reinterpret_cast<T*>(reinterpret_cast<const TMessage*>(this)->Data.data());
+			return *reinterpret_cast<T*>(reinterpret_cast<TMessage*>(this)->Data.data());
 		}
 
 		/// @brief 将内部数据视作目标类型的常量引用
@@ -45,9 +44,9 @@ namespace Cango :: inline ByteCommunication :: inline Core {
 		[[nodiscard]] CByteSpan ToSpan() const noexcept { return {reinterpret_cast<const ByteType*>(this), TMessage::FullSize}; }
 
 		/// @brief 预定义的格式化器，将 @c TypedMessage 转化为字节区间格式化
-		struct formatter : std::formatter<CByteSpan> {
-			auto format(const TMessage& message, std::format_context& ctx) const {
-				return std::formatter<CByteSpan>::format(message.ToSpan(), ctx);
+		struct formatter : fmt::formatter<CByteSpan> {
+			auto format(const TMessage& message, auto& ctx) const {
+				return fmt::formatter<CByteSpan>::format(message.ToSpan(), ctx);
 			}
 		};
 	};
