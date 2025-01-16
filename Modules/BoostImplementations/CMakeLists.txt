@@ -3,7 +3,7 @@ project(Cango.ByteCommunication.BoostImplementations)
 AddCXXModule(
 	NAME "BoostImplementations"
 	NAMESPACE "Cango::ByteCommunication"
-	CXX_STANDARD 26
+	CXX_STANDARD 20
 	HEADER_DIR Headers
 	SOURCE_DIR Sources
 	TESTER_DIR Testers

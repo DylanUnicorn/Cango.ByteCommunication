@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.16)
 
 include("Cango")
 
@@ -19,7 +19,7 @@ AddModulesInDirectory(
 AddCXXModule(
 	NAME "ByteCommunication"
 	NAMESPACE "Cango"
-	CXX_STANDARD 26
+	CXX_STANDARD 20
 	HEADER_DIR Headers
 	SOURCE_DIR Sources
 	TESTER_DIR Testers
